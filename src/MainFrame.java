@@ -17,7 +17,7 @@ public class MainFrame extends JFrame {
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-        setTitle("ITEMS CLIENT APPLICATION");
+        setTitle("ITEMS SHOP CLIENT APPLICATION");
 
         menuPage = new MenuPage(this);
         menuPage.setVisible(true);
