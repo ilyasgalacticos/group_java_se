@@ -14,7 +14,7 @@ public class MenuPage extends Container {
         setLocation(0,0);
         setLayout(null);
 
-        addItemButton = new ApplicationButton("ADD ITEM");
+        addItemButton = new ApplicationButton("ADD NEW ITEM");
         addItemButton.setLocation(250, 50);
         add(addItemButton);
         addItemButton.addActionListener(new ActionListener() {
@@ -25,7 +25,7 @@ public class MenuPage extends Container {
             }
         });
 
-        listItemsButton = new ApplicationButton("LIST ITEMS");
+        listItemsButton = new ApplicationButton("LIST ALL ITEMS");
         listItemsButton.setLocation(250, 150);
         add(listItemsButton);
         listItemsButton.addActionListener(new ActionListener() {
