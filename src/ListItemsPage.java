@@ -11,6 +11,7 @@ public class ListItemsPage extends Container {
     private JTable table;
     private JScrollPane pane;
     private JPanel panel;
+    private ApplicationButtonRenderer buttonRenderer = new ApplicationButtonRenderer();
 
     public ListItemsPage(MainFrame parent){
 
@@ -34,6 +35,7 @@ public class ListItemsPage extends Container {
         table = new JTable();
         table.setPreferredScrollableViewportSize(new Dimension(650, 450));
         table.setRowHeight(30);
+        table.addMouseListener(new TableButtonMouseListener(table, parent, this));
 
         pane = new JScrollPane(table);
 
@@ -50,6 +52,7 @@ public class ListItemsPage extends Container {
     public void fillTable(ArrayList<Items> items){
         ItemsTableModel tableModel = new ItemsTableModel(items);
         table.setModel(tableModel);
+        table.getColumn("EDIT").setCellRenderer(buttonRenderer);
         parent.refresh();
     }
 

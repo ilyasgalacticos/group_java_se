@@ -6,6 +6,8 @@ public class MainFrame extends JFrame {
     private MenuPage menuPage;
     private AddItemPage addItemPage;
     private ListItemsPage listItemsPage;
+    private EditItemPage editItemPage;
+
     private DBConnection dbConnection;
 
     public MainFrame(){
@@ -31,6 +33,10 @@ public class MainFrame extends JFrame {
         listItemsPage.setVisible(false);
         add(listItemsPage);
 
+        editItemPage = new EditItemPage(this);
+        editItemPage.setVisible(false);
+        add(editItemPage);
+
     }
     public void showMainMenuPage(){
         this.menuPage.setVisible(true);
@@ -50,16 +56,21 @@ public class MainFrame extends JFrame {
     public void hideListItemPage(){
         this.listItemsPage.setVisible(false);
     }
+    public void showEditItemPage(){ this.editItemPage.setVisible(true);}
+    public void hideEditItemPage(){ this.editItemPage.setVisible(false);}
+
+    public void fillItemsList(ArrayList<Items> items){
+        this.listItemsPage.fillTable(items);
+    }
+    public void prepareEditItemPage(Items item){this.editItemPage.prepareForm(item);}
+
     public void addItem(Items item){
         this.dbConnection.addItem(item);
     }
-    public void fillTable(ArrayList<Items> items){
-        this.listItemsPage.fillTable(items);
-    }
-
-    public ArrayList<Items> listItems(){
-        return this.dbConnection.getAllItems();
-    }
+    public ArrayList<Items> listItems(){return this.dbConnection.getAllItems(); }
+    public Items getItem(Long id){ return this.dbConnection.getItem(id); }
+    public void saveItem(Items item){ this.dbConnection.updateItem(item);}
+    public void deleteItem(Long id){this.dbConnection.deleteItem(id);}
 
     public void refresh(){
         setResizable(true);

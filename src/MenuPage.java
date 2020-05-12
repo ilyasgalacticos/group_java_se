@@ -31,7 +31,7 @@ public class MenuPage extends Container {
         listItemsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                parent.fillTable(parent.listItems());
+                parent.fillItemsList(parent.listItems());
                 parent.hideMainMenuPage();
                 parent.showListItemPage();
             }

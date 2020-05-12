@@ -71,6 +71,37 @@ public class DBConnection {
 
     }
 
+    public Items getItem(Long id){
+
+        Items item = null;
+
+        try{
+
+            PreparedStatement statement = connection.prepareStatement("" +
+                    "SELECT id, name, price, amount FROM items WHERE id = ? ");
+
+            statement.setLong(1, id);
+
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                item = new Items(
+                        resultSet.getLong("id"),
+                        resultSet.getString("name"),
+                        resultSet.getDouble("price"),
+                        resultSet.getInt("amount")
+                );
+            }
+
+            statement.close();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return item;
+
+    }
+
     public void updateItem(Items item){
 
         try{

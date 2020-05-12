@@ -1,4 +1,5 @@
 import javax.swing.table.AbstractTableModel;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class ItemsTableModel extends AbstractTableModel {
@@ -17,7 +18,7 @@ public class ItemsTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 5;
     }
 
     @Override
@@ -31,6 +32,13 @@ public class ItemsTableModel extends AbstractTableModel {
                 return items.get(row).getPrice();
             case 3:
                 return items.get(row).getAmount();
+            case 4:
+                final ApplicationButton editButton = new ApplicationButton("EDIT ITEM");
+                editButton.setBackground(Color.DARK_GRAY);
+                editButton.setFont(new Font("Calibri", 1, 16));
+                editButton.setBorder(null);
+                editButton.setSize(100,20);
+                return editButton;
             default: return "";
         }
     }
@@ -50,6 +58,9 @@ public class ItemsTableModel extends AbstractTableModel {
                 break;
             case 3:
                 result = "AMOUNT";
+                break;
+            case 4:
+                result = "EDIT";
                 break;
         }
         return result;
